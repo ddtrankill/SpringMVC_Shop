@@ -1,14 +1,24 @@
 package com.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.xml.FieldType;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.*;
-import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Product implements Serializable {
@@ -22,7 +32,9 @@ public class Product implements Serializable {
     @NotEmpty(message = "The product name must not be empty")
     private String productName;
 
-    private String productCategory;
+    @OneToOne
+    @JoinColumn(name = "categoryId")
+    private Category productCategory;
     private String productDescription;
 
     @Min(value = 0, message = "The product price must not be less then zero")
@@ -59,11 +71,11 @@ public class Product implements Serializable {
         this.productName = productName;
     }
 
-    public String getProductCategory() {
+    public Category getProductCategory() {
         return productCategory;
     }
 
-    public void setProductCategory(String productCategory) {
+    public void setProductCategory(Category productCategory) {
         this.productCategory = productCategory;
     }
 

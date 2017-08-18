@@ -61,7 +61,7 @@
 		});
 	});
 
-	$('.delete-cart').on('click', function(e) {
+	$(".delete-cart").on("click", function(e) {
 		var url = $(this).attr("href");
 		e.preventDefault();
 		$.ajax({

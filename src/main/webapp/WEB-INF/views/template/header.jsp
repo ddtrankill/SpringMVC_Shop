@@ -81,8 +81,8 @@
 												<spring:message code="shop.product.inventory"></spring:message></a>
 											</li>
 											<li>
-												<a href="<spring:url value="/admin/product/addProduct"/>">
-												<spring:message code="shop.product.add"></spring:message></a>
+												<a href="<spring:url value="/admin/category/all"/>">
+												<spring:message code="shop.category.management"></spring:message></a>
 											</li>
 										</c:if>
 										<c:if test="${item eq roleUser}">

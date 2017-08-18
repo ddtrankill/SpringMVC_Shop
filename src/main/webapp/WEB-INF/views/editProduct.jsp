@@ -1,14 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="/WEB-INF/views/template/header.jsp" %>
-
-
-<div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>Edit Product</h1>
-
-
-            <p class="lead">Please update the product information here:</p>
+            <h2>Edit Product</h2>
         </div>
 
         <form:form action="${pageContext.request.contextPath}/admin/product/editProduct"
@@ -18,26 +12,28 @@
 
             <div class="form-group">
                 <label for="name">Name</label>
-                <form:errors path="productName" cssStyle="color:#ff0000;" />
-                <form:input path="productName" id="name" class="form-Control" value="${product.productName}"/>
+                <form:errors path="productName" class="form-errors" />
+                <form:input path="productName" id="name" class="form-control" value="${product.productName}"/>
             </div>
 
             <div class="form-group">
                 <label for="category">Category</label>
-                <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category" value="instrument" />Instrument</label>
-                <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category" value="record" />Record</label>
-                <label class="checkbox-inline"><form:radiobutton path="productCategory" id="category" value="accessory" />Accessory</label>
+                <form:select path="productCategory.categoryId" class="form-control">
+					<c:forEach items="${categories}" var="category">
+						<form:option value="${category.getCategoryId()}">${category.getCategoryName()}</form:option>
+					</c:forEach>
+				</form:select>
             </div>
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <form:textarea path="productDescription" id="description" class="form-Control" value="${product.productDescription}"/>
+                <form:textarea path="productDescription" id="description" class="form-control" value="${product.productDescription}"/>
             </div>
 
             <div class="form-group">
                 <label for="price">Price</label>
-                <form:errors path="productPrice" cssStyle="color:#ff0000;" />
-                <form:input path="productPrice" id="price" class="form-Control" value="${product.productPrice}" />
+                <form:errors path="productPrice" class="form-errors" />
+                <form:input path="productPrice" id="price" class="form-control" value="${product.productPrice}" />
             </div>
 
             <div class="form-group">
@@ -54,13 +50,13 @@
 
             <div class="form-group">
                 <label for="unitInStock">Unit In Stock</label>
-                <form:errors path="unitInStock" cssStyle="color:#ff0000;" />
-                <form:input path="unitInStock" id="unitInStock" class="form-Control" value="${product.unitInStock}"/>
+                <form:errors path="unitInStock" class="form-errors" />
+                <form:input path="unitInStock" id="unitInStock" class="form-control" value="${product.unitInStock}"/>
             </div>
 
             <div class="form-group">
                 <label for="manufacturer">Manufacturer</label>
-                <form:input path="productManufacturer" id="manufacturer" class="form-Control" value="${product.productManufacturer}"/>
+                <form:input path="productManufacturer" id="manufacturer" class="form-control" value="${product.productManufacturer}"/>
             </div>
 
             <div class="form-group">
@@ -70,10 +66,9 @@
 
             <br/><br/>
 
-            <input type="submit" value="submit" class="btn btn-default">
+            <input type="submit" value="Submit" class="btn btn-default">
             <a href="<c:url value="/admin/productInventory" />" class="btn btn-default">Cancel</a>
 
         </form:form>
-
-
+</div>
 <%@ include file="/WEB-INF/views/template/footer.jsp" %>

@@ -1,3 +1,7 @@
-.product-image-middle{
+.product-image-middle {
 	height: 150px;
+}
+
+.form-errors {
+	color: red;
 }

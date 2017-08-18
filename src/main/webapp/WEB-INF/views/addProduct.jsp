@@ -1,24 +1,24 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/WEB-INF/views/template/header.jsp"%>
 <div class="container">
-	<h2><spring:message code="shop.product.add"></spring:message></h2>
+	<h2><spring:message code="shop.product.add"/></h2>
 
 	<form:form
 		action="${pageContext.request.contextPath}/admin/product/addProduct"
 		method="post" commandName="product" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="name">Name</label>
-			<form:errors path="productName" cssStyle="color:#ff0000;" />
-			<form:input path="productName" id="name" class="form-control" />
+			<form:errors path="productName" class="form-errors" />
+			<form:input path="productName" class="form-control" />
 		</div>
 
 		<div class="form-group">
-			<label for="category">Category</label> <label class="checkbox-inline"><form:radiobutton
-					path="productCategory" id="category" value="instrument" />Instrument</label>
-			<label class="checkbox-inline"><form:radiobutton
-					path="productCategory" id="category" value="record" />Record</label> <label
-				class="checkbox-inline"><form:radiobutton
-					path="productCategory" id="category" value="accessory" />Accessory</label>
+			<label for="category">Category</label>
+			<form:select path="productCategory.categoryId" class="form-control">
+				<c:forEach items="${categories}" var="category">
+					<form:option value="${category.getCategoryId()}">${category.getCategoryName()}</form:option>
+				</c:forEach>
+			</form:select>
 		</div>
 
 		<div class="form-group">

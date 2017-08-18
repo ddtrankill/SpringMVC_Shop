@@ -5,9 +5,7 @@
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>Customer Management Page</h1>
-
-            <p class="lead">This is the customer management page!</p>
+            <h2>Customer Management Page</h2>
         </div>
 
         <table class="table table-striped table-hover">

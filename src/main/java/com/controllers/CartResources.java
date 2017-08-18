@@ -25,13 +25,10 @@ import com.service.ProductService;
 @Controller
 @RequestMapping("/rest/cart")
 public class CartResources {
-
     @Autowired
     private CartService cartService;
-
     @Autowired
     private CartItemService cartItemService;
-
     @Autowired
     private CustomerService customerService;
     @Autowired

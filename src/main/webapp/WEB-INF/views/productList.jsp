@@ -23,12 +23,14 @@
 						src="<c:url value="/resources/images/${product.productId}.png" />"
 						class="product-image-middle" alt="image" /></td>
 					<td scope="row">${product.productName}</td>
-					<td>${product.productCategory}</td>
+					<td>${product.productCategory.getCategoryName()}</td>
 					<td>${product.productCondition}</td>
 					<td>${product.productPrice}USD</td>
-					<td><a
-						href="<spring:url value="/products/viewProduct/${product.productId}" />"><span
-							class="glyphicon glyphicon-info-sign"></span></a></td>
+					<td>
+						<a href="<spring:url value="/products/viewProduct/${product.productId}" />">
+							<span class="glyphicon glyphicon-info-sign"></span>
+						</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
